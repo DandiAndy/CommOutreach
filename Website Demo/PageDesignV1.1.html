@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html ng-app="appMaps">
+  <head>
+    <title>Simple Map</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+
+
+	<!--For bootstrap and jquery-->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/PageDesignV1.css">
+
+	<!--For google map -->
+	<script src="app/lodash.js"></script>
+	<script src="app/angular.min.js"></script>
+	<script src="app/angular-simple-logger.js"></script>
+	<script src="app/angular-google-maps.js"></script>
+
+
+
+	<script>
+	angular.module('appMaps', ['uiGmapgoogle-maps']).config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyDQ6nwsBNM4OyrxLdChApNwNHl3fUcVrEE',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
+    });
+	}).controller('mainCtrl', function($scope) {
+        $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14 };
+        $scope.options = {scrollwheel: false};
+		//toggle advanced search
+		$scope.advancedSearchToggle = false;
+
+		$scope.collapseOrExpandAdvancedSearch = function(){
+			$scope.advancedSearchToggle = !$scope.advancedSearchToggle;
+		}
+    });
+
+	</script>
+
+
+  <script>
+
+  var months = ["jan", "feb", "mar", "apr"];
+
+  $(document).ready(function(){
+    //click doesn't work as a function if the mouse leaves the area of the slider!!
+    for(var i = 1; i < 32; i++){
+      $("#date_day_A").html($("#date_day_A").html() + "<option value=\""+i+"\">"+i+"</option>");
+        $("#date_day_B").html($("#date_day_B").html() + "<option value=\""+i+"\">"+i+"</option>");
+    }
+
+    for(var i = 0; i < months.length; i++){
+        $("#date_month_A").html($("#date_month_A").html() + "<option value=\""+i+"\">"+months[i]+"</option>")
+        $("#date_month_B").html($("#date_month_B").html() + "<option value=\""+i+"\">"+months[i]+"</option>")
+    }
+
+    //2016 should be chnaged to the systems date
+    //1990 should be system dtae - X
+    //X needs to be defined
+    for(var i = 2016; i > 1990; i--){
+        $("#date_year_A").html($("#date_year_A").html() + "<option value=\""+i+"\">"+i+"</option>")
+        $("#date_year_B").html($("#date_year_B").html() + "<option value=\""+i+"\">"+i+"</option>")
+    }
+
+  });
+
+  </script>
+
+  </head>
+  <body>
+
+	<!-- navigation header container -->
+	<div class="container">
+		<div class="btn-group btn-group-justified">
+		  <a href="#" class="btn btn-primary">Map</a>
+		  <a href="#" class="btn btn-primary">Section 1</a>
+		  <a href="#" class="btn btn-primary">Section 2</a>
+		</div>
+	</div>
+
+	<br/>
+
+	<!-- google map container div -->
+	<div class="container" ng-controller="mainCtrl">
+
+		<!-- possible controller bar -->
+		<div class="row container">
+			<p style="display:inline;">Quick Filters:</p>&nbsp;&nbsp;&nbsp;<input type="text" style="display:inline;"/><select style="display:inline;"><option>one</option><option>two</option><option>three</option></select>
+			<button class="btn btn-info" type="button" onClick="changeClasses()" style="float:right">Toggle Search</button>
+		</div>
+		<br/>
+		<div id="map_canvas">
+			<div class="row map_canvas">
+				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options"></ui-gmap-google-map>
+				<div id="advanced-search" class="search-first-class" style="height:inherit;">
+					<form class="search-now-class form-inline" role="form" style="height:100%;">
+
+					<!--bootstrap-ify later form elements need to lineup in two columns-->
+					<div class="form-group">
+
+						<h2>Search</h2>
+
+						<label for="queryOne">Form input one:</label> <input id="queryOne" class="form-control" type="text"/>
+
+						<br/>
+						<br/>
+
+						<!--
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">-- N/A --
+							<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li value="#1"><a>One</a></li>
+								<li value="#2"><a>Two</a></li>
+								<li value="#3"><a>Three</a></li>
+							</ul>
+						</div>
+						-->
+						<label for="dropdownOne">Form input two:</label>
+						<select id="dropdownOne" class="form-control">
+						<option class="form-control">One</option>
+						<option class="form-control">two</option>
+						<option class="form-control">three</option>
+						<option class="form-control">four</option>
+						</select>
+
+						<br/>
+						<br/>
+
+						<label for="dropdownTwo">Form input three:</label>
+						<input id="dropdownTwo" class="form-control" list="options-list" type="text">
+
+						<datalist class="dropdown" id="options-list">
+							<option class="form-control">one</option>
+							<option class="form-control">two</option>
+							<option class="form-control">three</option>
+							<option class="form-control">four</option>
+						</datalist>
+
+						<br/>
+						<br/>
+
+						<label for="checkboxOne">Form input four:</label>
+						<input id="checkboxOne" class="form-control" type="checkbox">one</input>
+						<br/>
+						<label for="checkboxTwo">Form input five:</label>
+						<input id="checkboxTwo"class="form-control" type="checkbox">two</input>
+
+						<br/>
+						<br/>
+
+						<input class="form-control" style="margin-top:-10px;" type="submit" text="Search"/>
+
+						<br/>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+	<hr/>
+	</div>
+
+
+	<!--Timeline container-->
+	<div class="container">
+	<div style="height:150px;background-color:green;">
+
+	<!--
+	<div class="progress" style="height:30%">
+		<div class="progress-bar" role="progressbar" aria-valuenow="70"
+		aria-valuemin="20" aria-valuemax="100" style="width:70%">
+		<span class="sr-only">70% Complete</span>
+		</div>
+	</div>
+	-->
+
+  <form style="position:relative;left:22%;top:20%;width:56%;">
+
+    <div style="inline;">
+    <select id="date_day_A"/></select>
+    <select id="date_month_A"/></select>
+    <select id="date_year_A"/></select>
+
+
+    <input style="display:inline;" type="range" min="0" max="100"/>
+
+    <select id="date_day_B"/></select>
+    <select id="date_month_B"/></select>
+    <select id="date_year_B"/></select>
+    </div>
+
+  </form>
+
+	</div>
+	</div>
+
+	<div class="container">
+	<hr/>
+	</div>
+
+	<!--bookshelf container-->
+	<div class="container">
+	<div style="height:250px;background-color:blue;">
+	</div>
+	</div>
+
+	<div class="container">
+	<hr/>
+	</div>
+
+	<div class="container" style="margin-bottom:10px;height:120px;">
+	<div style="background-color:red;height:108px;">
+		<img alt="image/logo" src="img/Capture.png" style="float:right;"/>
+	</div>
+	</div>
+
+	<script>
+	var toggleSearch = false;
+	changeClasses();
+	function changeClasses(){
+
+		//alert(toggleSearch);
+
+		var map = document.getElementById("google-map");
+		var advancedSearchBar = document.getElementById("advanced-search");
+
+		if(toggleSearch){
+			map.className = "col-sm-8";
+			advancedSearchBar.className = "col-sm-4";
+			toggleSearch = false;
+		}else{
+			map.className = "ng-isolate-scope angular-google-map col-sm-12";
+			advancedSearchBar.className = "hide-search";
+			toggleSearch = true;
+		}
+	}
+	</script>
+
+  </body>
+
+
+
+</html>

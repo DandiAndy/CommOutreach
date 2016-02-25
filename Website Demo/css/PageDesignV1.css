@@ -1,0 +1,156 @@
+/*
+
+Colour 
+
+The blue of the logo is PMS 279 which 
+
+represents both the UN blue and the 
+
+blue in Dalhousie’s secondary colour 
+
+palette.
+
+The chevron element appears in 
+
+PMS 646.
+
+Pantone 279 C
+
+CMYK - 68 / 34 / 0 / 0
+
+RGB - 80 / 145 / 205
+
+PANTONE 279 C
+
+Pantone 646 C
+
+CMYK - 73 / 47 / 25 / 3
+
+RGB - 82 / 121 / 153
+
+PANTONE 646 C
+
+Fonts
+
+Helvetica Neue
+
+Use for body text.
+
+Museo slab
+
+Use for headlines and subheads. 
+
+Novecento
+
+The sans serif used in the logo.
+
+*/
+
+button {font-family: Helvetica Neue;color:blue;}
+body {background-color:#5091CD;}
+.angular-google-map-container { height: 400px; }
+.map_canvas{height:400px;}
+.hide-search{display:none;}
+.search-first-class{display:none;}
+
+.search-now-class{
+	background-color:#639DD3;
+	width:100%;
+	float:right;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.form-group{margin:0;}
+
+.form-control{width:70%;}
+
+input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+    
+    /*fix for FF unable to apply focus style bug */
+    border: 1px solid white;
+    
+    /*required for proper track sizing in FF*/
+    width: 300px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -4px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+    width: 300px;
+    height: 5px;
+    
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
