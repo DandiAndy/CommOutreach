@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="appMaps">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Simple Map</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -58,10 +59,6 @@
 
   $(document).ready(function(){
     //click doesn't work as a function if the mouse leaves the area of the slider!!
-    for(var i = 1; i < 32; i++){
-      $("#date_day_A").html($("#date_day_A").html() + "<option value=\""+i+"\">"+i+"</option>");
-        $("#date_day_B").html($("#date_day_B").html() + "<option value=\""+i+"\">"+i+"</option>");
-    }
 
     for(var i = 0; i < months.length; i++){
         $("#date_month_A").html($("#date_month_A").html() + "<option value=\""+i+"\">"+months[i]+"</option>")
@@ -99,14 +96,18 @@
 
 		<!-- possible controller bar -->
 		<div class="row container">
+      <div id="quick_search">
 			<p style="display:inline;">Quick Filters:</p>&nbsp;&nbsp;&nbsp;<input type="text" style="display:inline;"/><select style="display:inline;"><option>one</option><option>two</option><option>three</option></select>
-			<button class="btn btn-info" type="button" onClick="changeClasses()" style="float:right">Toggle Search</button>
-		</div>
+      </div>
+      <div id="adv_search">
+      <button class="btn btn-info" type="button" onClick="changeClasses()" style="float:right">Toggle Search</button>
+      </div>
+    </div>
 		<br/>
 		<div id="map_canvas">
 			<div class="row map_canvas">
 				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options"></ui-gmap-google-map>
-				<div id="advanced-search" class="search-first-class" style="height:inherit;">
+				<div id="advanced-search" class="search-first-class">
 					<form class="search-now-class form-inline" role="form" style="height:100%;">
 
 					<!--bootstrap-ify later form elements need to lineup in two columns-->
@@ -191,17 +192,12 @@
 	</div>
 	-->
 
-  <form style="position:relative;left:22%;top:20%;width:56%;">
+  <form id="data_slider_group" style="position:relative;left:22%;top:20%;width:56%;">
 
     <div style="inline;">
-    <select id="date_day_A"/></select>
     <select id="date_month_A"/></select>
     <select id="date_year_A"/></select>
-
-
-    <input style="display:inline;" type="range" min="0" max="100"/>
-
-    <select id="date_day_B"/></select>
+    <input id="data_slider" style="display:inline;" type="range" min="0" max="100"/>
     <select id="date_month_B"/></select>
     <select id="date_year_B"/></select>
     </div>
@@ -227,7 +223,7 @@
 
 	<div class="container" style="margin-bottom:10px;height:120px;">
 	<div style="background-color:red;height:108px;">
-		<img alt="image/logo" src="img/Capture.png" style="float:right;"/>
+		<img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:right;"/>
 	</div>
 	</div>
 
