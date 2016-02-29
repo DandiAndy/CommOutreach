@@ -46,13 +46,18 @@ The sans serif used in the logo.
 
 */
 
+.well{
+	background-color:black;
+}
 
 button {font-family: Helvetica Neue;color:blue;}
+
 body {
 	background-color:#5091CD;
 	color: white;
 }
-select, option{color:black;} 
+
+select, option{color:black;}
 .angular-google-map-container { height: 400px; }
 .map_canvas{height:400px;}
 .hide-search{display:none;}
@@ -175,14 +180,21 @@ input[type=range]:focus::-ms-fill-upper {
     background: #ccc;
 }
 
+#date_month_A, #date_month_B, #date_year_A, #date_year_B{
+	width: 30%;
+	position: relative;
+	float:left;
+	left:20%;
+}
+
 @media screen and (max-width:480px){
 
 	#data_slider{position:relative;display:inline;width:70%;left:15%;}
 	#date_month_A, #date_month_B, #date_year_A, #date_year_B{
-		position: relative;
-		display:block;
 		width:50%;
-		left:25%;
+		position:relative;
+		float:left;
+		left:0;
 	}
 
 	#romeo_img{
@@ -198,7 +210,40 @@ input[type=range]:focus::-ms-fill-upper {
 	#adv_search{
 		display:block;
 		margin-top: 15px;
-		float: left;
+		float:left;
+		clear: both;
 	}
 
+}
+
+@media screen and (max-width:320px) {
+	.box-selection{
+		width:46%;
+		position:relative;
+		left:25%;
+	}
+}
+
+.box-selection{
+
+	float:left;
+	margin:1%;
+	min-width:150px;
+	max-width:150px;
+	text-align:center;
+	padding:1%;
+	border-radius:5px;
+	color:white;
+
+}
+
+.date-picker{
+	float:left;
+}
+
+.quick_filters{
+	width: 35%;
+	    min-width: 100px;
+	    max-width: 200px;
+	    float: left;
 }
