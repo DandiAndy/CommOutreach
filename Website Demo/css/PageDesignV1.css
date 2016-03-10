@@ -1,16 +1,16 @@
 /*
 
-Colour 
+Colour
 
-The blue of the logo is PMS 279 which 
+The blue of the logo is PMS 279 which
 
-represents both the UN blue and the 
+represents both the UN blue and the
 
-blue in Dalhousie’s secondary colour 
+blue in Dalhousie’s secondary colour
 
 palette.
 
-The chevron element appears in 
+The chevron element appears in
 
 PMS 646.
 
@@ -38,7 +38,7 @@ Use for body text.
 
 Museo slab
 
-Use for headlines and subheads. 
+Use for headlines and subheads.
 
 Novecento
 
@@ -46,8 +46,18 @@ The sans serif used in the logo.
 
 */
 
+.well{
+	background-color:black;
+}
+
 button {font-family: Helvetica Neue;color:blue;}
-body {background-color:#5091CD;}
+
+body {
+	background-color:#5091CD;
+	color: white;
+}
+
+select, option{color:black;}
 .angular-google-map-container { height: 400px; }
 .map_canvas{height:400px;}
 .hide-search{display:none;}
@@ -65,13 +75,28 @@ body {background-color:#5091CD;}
 
 .form-control{width:70%;}
 
+#data_slider{width:100%;}
+
+#romeo_img{
+	height: :50%;
+	width: 50%;
+}
+
+#quick_search{
+	display: inline;
+}
+
+#adv_search{
+	display:inline;
+}
+
 input[type=range] {
     /*removes default webkit styles*/
     -webkit-appearance: none;
-    
+
     /*fix for FF unable to apply focus style bug */
     border: 1px solid white;
-    
+
     /*required for proper track sizing in FF*/
     width: 300px;
 }
@@ -122,10 +147,10 @@ input[type=range]:-moz-focusring{
 input[type=range]::-ms-track {
     width: 300px;
     height: 5px;
-    
+
     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
     background: transparent;
-    
+
     /*leave room for the larger thumb to overflow with a transparent border */
     border-color: transparent;
     border-width: 6px 0;
@@ -153,4 +178,72 @@ input[type=range]:focus::-ms-fill-lower {
 }
 input[type=range]:focus::-ms-fill-upper {
     background: #ccc;
+}
+
+#date_month_A, #date_month_B, #date_year_A, #date_year_B{
+	width: 30%;
+	position: relative;
+	float:left;
+	left:20%;
+}
+
+@media screen and (max-width:480px){
+
+	#data_slider{position:relative;display:inline;width:70%;left:15%;}
+	#date_month_A, #date_month_B, #date_year_A, #date_year_B{
+		width:50%;
+		position:relative;
+		float:left;
+		left:0;
+	}
+
+	#romeo_img{
+		height: 50%;
+		width:50%;
+	}
+
+	#quick_search{
+		display: block;
+		float:left;
+	}
+
+	#adv_search{
+		display:block;
+		margin-top: 15px;
+		float:left;
+		clear: both;
+	}
+
+}
+
+@media screen and (max-width:320px) {
+	.box-selection{
+		width:46%;
+		position:relative;
+		left:25%;
+	}
+}
+
+.box-selection{
+
+	float:left;
+	margin:1%;
+	min-width:150px;
+	max-width:150px;
+	text-align:center;
+	padding:1%;
+	border-radius:5px;
+	color:white;
+
+}
+
+.date-picker{
+	float:left;
+}
+
+.quick_filters{
+	width: 35%;
+	    min-width: 100px;
+	    max-width: 200px;
+	    float: left;
 }
