@@ -27,7 +27,7 @@ angular.module('appMaps', ['uiGmapgoogle-maps']).config(function(uiGmapGoogleMap
       libraries: 'weather,geometry,visualization'
   });
 }).controller('mainCtrl', function($scope) {
-      $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 14 };
+      $scope.map = {center: {latitude: 33.33, longitude: 44.434418 }, zoom: 5 };
       $scope.options = {scrollwheel: false};
   //toggle advanced search
   $scope.advancedSearchToggle = false;
@@ -39,14 +39,14 @@ angular.module('appMaps', ['uiGmapgoogle-maps']).config(function(uiGmapGoogleMap
 
   $scope.markersToSee = [];
 
-  $scope.newFunction = function(long, lat){
+  $scope.newFunction = function(lat, long){
 
     //alert("fneifn");
     var _markers = [];
 
       //alert(_markers.length);
       for(var i = 0; i < 10; i++)
-        _markers.push(anotherFunction(i));
+        _markers.push(anotherFunction(i, long, lat));
 
 
       $scope.markersToSee = _markers;
@@ -61,17 +61,18 @@ angular.module('appMaps', ['uiGmapgoogle-maps']).config(function(uiGmapGoogleMap
 });
 
 
-function anotherFunction(i){
+function anotherFunction(i, long, lat){
 
 
-    var lat_min = 10, lng_min = 10, lat_range = 100, lng_range = 100;
+    var lat_min = lat - 3, lng_min = long - 3, lat_range = 6, lng_range = 6;
 
     var latitude = lat_min + (Math.random() * lat_range);
     var longitude = lng_min + (Math.random() * lng_range);
     var ret = {
         latitude: latitude,
         longitude: longitude,
-        title: 'm' + i
+        title: 'm' + i,
+        type: "cluster"
     };
 
     ret["id"] = i;
