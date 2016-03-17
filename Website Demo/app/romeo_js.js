@@ -35,4 +35,76 @@ angular.module('appMaps', ['uiGmapgoogle-maps']).config(function(uiGmapGoogleMap
   $scope.collapseOrExpandAdvancedSearch = function(){
     $scope.advancedSearchToggle = !$scope.advancedSearchToggle;
   }
+
+
+  $scope.markersToSee = [];
+
+  $scope.newFunction = function(long, lat){
+
+    //alert("fneifn");
+    var _markers = [];
+
+      //alert(_markers.length);
+      for(var i = 0; i < 10; i++)
+        _markers.push(anotherFunction(i));
+
+
+      $scope.markersToSee = _markers;
+
+     //alert(_markers.length);
+
+  }
+
+
+
+  $scope.makersToSee = [];
+});
+
+
+function anotherFunction(i){
+
+
+    var lat_min = 10, lng_min = 10, lat_range = 100, lng_range = 100;
+
+    var latitude = lat_min + (Math.random() * lat_range);
+    var longitude = lng_min + (Math.random() * lng_range);
+    var ret = {
+        latitude: latitude,
+        longitude: longitude,
+        title: 'm' + i
+    };
+
+    ret["id"] = i;
+    return ret;
+
+}
+
+    //$scope.map.marker = new marker()
+    /*
+    $("#google-map").append("<ui-gmap-marker key=\"marker.id\" coords=\"marker.coords\" options=\"marker.options\" events=\"marker.events\"></ui-gmap-marker>");
+
+    $scope.marker = {
+
+      id: 2,
+      coords: {
+        latitude: lat,
+        longitude: long
+      },
+      options: {
+        draggable: false,
+        title: "blah blah",
+        animation: 1
+      }
+
+    }
+
+    alert("done");
+
+  }
+  */
+
+
+
+$(document).ready(function(){
+  //newFunction(0, 0);
 });

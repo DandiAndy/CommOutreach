@@ -53,6 +53,8 @@
 		<div class="row container">
       <div id="quick_search">
 			<p style="">Quick Filters:</p>&nbsp;&nbsp;&nbsp;<select class="form-control quick_filters" style=""></select><select class="form-control quick_filters" style=""><option>one</option><option>two</option><option>three</option></select>
+
+      <button data-ng-click="newFunction(51.219053, 4.404418)">Do Something</button>
       </div>
       <div id="adv_search">
       <button class="btn btn-info" type="button" onClick="changeClasses()" style="float:right">Toggle Search</button>
@@ -61,7 +63,14 @@
 		<br/>
 		<div id="map_canvas">
 			<div class="row map_canvas">
-				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options"></ui-gmap-google-map>
+				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options">
+
+        <ui-gmap-markers models="markersToSee" coords="'self'" icon="'icon'">
+        </ui-gmap-markers>
+
+
+        </ui-gmap-google-map>
+
 				<div id="advanced-search" class="search-first-class">
 					<form class="search-now-class form-inline" role="form" style="height:100%;">
 
