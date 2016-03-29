@@ -32,6 +32,12 @@
   <script src="app/romeo_js.js"></script>
 
 
+    <style>
+      
+    </style>
+
+
+
   </head>
   <body>
 
@@ -183,28 +189,28 @@
 
     <a href="##">
     <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <p>Syria</p>
+      <h3>Syria</h3>
       <img alt="Syria" src="img/IMG_0003.jpg" style="width:169px;height:256px;"/>
     </div>
     </a>
 
     <a>
     <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <p>South Sudan 1</p>
+      <H3>South Sudan 1</h3>
       <img alt="South Sudan" src="img/IMG_0002.jpg" style="width:169px;height:256px;"/>
     </div>
     </a>
 
     <a>
     <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <p>Other 2</p>
+      <H3>Other 2</H3>
       <img alt="Other 2" src="http://.com/uploads/syria.png" style="width:64px;height:64px;"/>
     </div>
     </a>
 
     <a>
     <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <p>Other 3</p>
+      <H3>Other 3</H3>
       <img alt="Other 3" src="http://.com/uploads/syria.png" style="width:64px;height:64px;"/>
     </div>
     </a>
@@ -218,10 +224,15 @@
 
 	<div class="container" style="margin-bottom:10px;height:120px;">
 	<div style="float:left;width:50%;">
-    <a href="###" style="float:left;margin:10px;"><img src="img/twitter-32.ico"></a>
-    <a href="###" style="float:left;margin:10px;"><img src="img/instagram-32.ico"></a>
-    <a href="###" style="float:left;margin:10px;"><img src="img/facebook-5-32.ico"></a>
-    <a href="###" style="float:left;margin:10px;"><img src="img/soundcloud-2-32.ico"></a>
+    
+    <a class="twitter" href="###" > <img src="img/twitter.png"></a>
+    
+    <a class="insta" href="###" > <img src="img/insta.png"></a>
+    
+    <a class="facebook" href="###" id="facebook"></a>
+
+    <a class="soundcloud" href="###" id="soundcloud"></a>
+    
     <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
   </div>
   <div style="float:right;width:50%;">
@@ -233,6 +244,54 @@
   </div>
 
 	</div>
+	<style>
+		.facebook{
+			content:url('img/facebookDark.png');
+			float:left;
+			margin:10px;
+		}
+		.facebook:hover{
+			content:url('img/facebook.png');
+			float:left;
+			margin:10px;
+		}
+		.soundcloud{
+			content:url('img/soundcloudDark.png');
+			float:left;
+			margin:10px;
+		}
+		.soundcloud:hover{
+			content:url('img/soundcloud.png');
+			float:left;
+			margin:10px;
+		}
+
+		.twitter{
+			content:url('img/twitterDark.png');
+			float:left;
+			margin:10px;
+		}
+		.twitter:hover{
+			content:url('img/twitter.png');
+			float:left;
+			margin:10px;
+		}
+
+
+		.insta{
+			content:url('img/instaDark.png');
+			float:left;
+			margin:10px;
+		}
+		.insta:hover{
+			content:url('img/insta.png');
+			float:left;
+			margin:10px;
+		}
+
+
+	</style>
+
 
 	<script>
 	var toggleSearch = false;
@@ -255,6 +314,7 @@
 		}
 	}
 	</script>
+
 
   </body>
 

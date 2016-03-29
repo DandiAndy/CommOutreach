@@ -69,6 +69,8 @@ select, option{color:black;}
 	float:right;
 	padding-left:10px;
 	padding-right:10px;
+	padding-bottom: 55px;
+	border-radius: 10px;
 }
 
 .form-group{margin:0;}
