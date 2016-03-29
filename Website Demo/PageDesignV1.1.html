@@ -33,7 +33,7 @@
 
 
     <style>
-      
+
     </style>
 
 
@@ -57,11 +57,13 @@
 
 		<!-- possible controller bar -->
 		<div class="row container">
+      <!---
       <div id="quick_search">
 			<p style="">Quick Filters:</p>&nbsp;&nbsp;&nbsp;<select class="form-control quick_filters" style=""></select><select class="form-control quick_filters" style=""><option>one</option><option>two</option><option>three</option></select>
 
       <button data-ng-click="newFunction(33.33, 44.43)">Do Something</button>
       </div>
+    -->
       <div id="adv_search">
       <button class="btn btn-info" type="button" onClick="changeClasses()" style="float:right">Toggle Search</button>
       </div>
@@ -134,7 +136,7 @@
 						<br/>
 						<br/>
 
-						<input class="form-control" style="margin-top:-10px;" type="submit" text="Search"/>
+						<input data-ng-click="newFunction(33.33, 44.43)" class="form-control" style="margin-top:-10px;" type="submit" text="Search"/>
 
 						<br/>
 					</div>
@@ -224,15 +226,15 @@
 
 	<div class="container" style="margin-bottom:10px;height:120px;">
 	<div style="float:left;width:50%;">
-    
+
     <a class="twitter" href="###" > <img src="img/twitter.png"></a>
-    
+
     <a class="insta" href="###" > <img src="img/insta.png"></a>
-    
+
     <a class="facebook" href="###" id="facebook"></a>
 
     <a class="soundcloud" href="###" id="soundcloud"></a>
-    
+
     <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
   </div>
   <div style="float:right;width:50%;">
