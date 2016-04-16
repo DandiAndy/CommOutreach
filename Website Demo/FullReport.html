@@ -2,7 +2,8 @@
 <html ng-app="appMaps">
   <head>
     <title>Simple Map</title>
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 
     <style>
@@ -22,7 +23,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-  <!-- css here -->
+ 	<!-- css here -->
 	<link rel="stylesheet" type="text/css" href="css/PageDesignV1.css">
 
 	<!-- For google map -->
@@ -30,14 +31,13 @@
 	<script src="app/angular.min.js"></script>
 	<script src="app/angular-simple-logger.js"></script>
 	<script src="app/angular-google-maps.js"></script>
-  <script src="app/romeo_js.js"></script>
-
+  	<script src="app/romeo_js.js"></script>
 
   </head>
+
   <body>
 
-
-  <!-- navigation header container -->
+	<!-- navigation header container -->
 	<div class="container">
 		<div class="btn-group btn-group-justified">
       <a href="PageDesignV1.1.html" class="btn btn-primary">Map & Timeline</a>
@@ -46,42 +46,45 @@
 		</div>
 	</div>
 
-
-  <!-- content goes here -->
-  <div class="container">
-
-  <a href="reports/csci3171-as3-w16.pdf" download="csci3171-as3-w16.pdf">Download</a>
-
-  <!--Temp pdf used add a pdf folder and change the current .pdf-->
-  <iframe src = "reports/csci3171-as3-w16.pdf" width="100%" height="800px" allowfullscreen webkitallowfullscreen></iframe>
-  </div>
-
+	<!-- content goes here -->
+	<div class="container">
+		<!--PDF download-->
+		<a href="reports/csci3171-as3-w16.pdf" download="csci3171-as3-w16.pdf">Download</a>
+		<!--Temp pdf used add a pdf folder and change the current .pdf-->
+		<iframe src = "reports/csci3171-as3-w16.pdf" width="100%" height="800px" allowfullscreen webkitallowfullscreen></iframe>
+	</div>
 
   </body>
 
+  <!--Footer-->
   <div class="container" style="margin-bottom:10px;height:120px;">
 	<div style="float:left;width:50%;">
 
-    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
+		<!--Social media links-->
+	    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
+	    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
+	    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
+	    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
+	    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
 
-    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
+  	</div>
 
-    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
+	<div style="float:right;width:50%;">
+		<!--address-->
+		<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
+		<!--website link-->
+		<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
+		<!--email link-->
+		<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
+		<!--copyright info-->
+		<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
+  	</div>
 
-    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
-
-    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
   </div>
-  <div style="float:right;width:50%;">
-  <p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
-  <a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
-  <a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
 
-  <p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
-  </div>
-
-	</div>
 	<style>
+
+		/*Icons for social media links*/
 		.facebook{
 			content:url('img/facebookDark.png');
 			float:left;
@@ -102,7 +105,6 @@
 			float:left;
 			margin:10px;
 		}
-
 		.twitter{
 			content:url('img/twitterDark.png');
 			float:left;
@@ -113,8 +115,6 @@
 			float:left;
 			margin:10px;
 		}
-
-
 		.insta{
 			content:url('img/instaDark.png');
 			float:left;
@@ -126,7 +126,6 @@
 			margin:10px;
 		}
 
-
 	</style>
 
-  </html>
+</html>
