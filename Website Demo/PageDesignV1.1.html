@@ -1,325 +1,325 @@
 <!DOCTYPE html>
 <html ng-app="appMaps">
-  <head>
-    <title>Simple Map</title>
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
 
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
+	<head>
+		<title>Simple Map</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
 
+		<style>
+			html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			}
+			#map {
+			height: 100%;
+			}
+		</style>
 
-	<!--For bootstrap and jquery-->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<!--For bootstrap and jquery-->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/PageDesignV1.css">
+		<link rel="stylesheet" type="text/css" href="css/PageDesignV1.css">
 
-	<!--For google map -->
-	<script src="app/lodash.js"></script>
-	<script src="app/angular.min.js"></script>
-	<script src="app/angular-simple-logger.js"></script>
-	<script src="app/angular-google-maps.js"></script>
-  <script src="app/romeo_js.js"></script>
+		<!--For google map -->
+		<script src="app/lodash.js"></script>
+		<script src="app/angular.min.js"></script>
+		<script src="app/angular-simple-logger.js"></script>
+		<script src="app/angular-google-maps.js"></script>
+		<script src="app/romeo_js.js"></script>
 
+	</head>
 
-    <style>
+	<body>
 
-    </style>
-
-
-
-  </head>
-  <body>
-
-	<!-- navigation header container -->
-	<div class="container">
-		<div class="btn-group btn-group-justified">
-		  <a href="PageDesignV1.1.html" class="btn btn-primary">Map & Timeline</a>
-		  <a href="Highlights.html" class="btn btn-primary">Highlights & Key Information</a>
-		  <a href="FullReport.html" class="btn btn-primary">Full Report</a>
+		<!-- navigation header container -->
+		<div class="container">
+			<div class="btn-group btn-group-justified">
+				<a href="PageDesignV1.1.html" class="btn btn-primary">Map & Timeline</a>
+				<a href="Highlights.html" class="btn btn-primary">Highlights & Key Information</a>
+				<a href="FullReport.html" class="btn btn-primary">Full Report</a>
+			</div>
 		</div>
-	</div>
 
-	<br/>
+		<br/>
 
-	<!-- google map container div -->
-	<div class="container" ng-controller="mainCtrl">
+		<!-- google map container div -->
+		<div class="container" ng-controller="mainCtrl">
 
 		<!-- possible controller bar -->
 		<div class="row container">
-      <!---
-      <div id="quick_search">
-			<p style="">Quick Filters:</p>&nbsp;&nbsp;&nbsp;<select class="form-control quick_filters" style=""></select><select class="form-control quick_filters" style=""><option>one</option><option>two</option><option>three</option></select>
 
-      <button data-ng-click="newFunction(33.33, 44.43)">Do Something</button>
-      </div>
-    -->
-      <div id="adv_search">
-      <button class="btn btn-info" type="button" onClick="changeClasses()" style="float:right">Toggle Search</button>
-      </div>
-    </div>
+			<!---Quick search (removed from microsite):
+			<div id="quick_search">
+				<p style="">Quick Filters:</p>&nbsp;&nbsp;&nbsp;<select class="form-control quick_filters" style=""></select><select class="form-control quick_filters" style=""><option>one</option><option>two</option><option>three</option></select>
+
+			<button data-ng-click="newFunction(33.33, 44.43)">Do Something</button>
+			</div>
+	    	-->
+
+	    	<!--Toggle search button-->
+			<div id="adv_search">
+				<button class="btn btn-info" type="button" onClick="changeClasses()" style="float:right">Toggle Search</button>
+			</div>
+
+    	</div>
+
 		<br/>
+
+		<!--Interactive map-->
 		<div id="map_canvas">
 			<div class="row map_canvas">
+				<!--Map-->
 				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options">
+					<!--Hotspot markers-->
+		        	<ui-gmap-markers models="markersToSee" coords="'self'" doCluster=true icon="'icon'"></ui-gmap-markers>
+        		</ui-gmap-google-map>
 
-        <ui-gmap-markers models="markersToSee" coords="'self'" doCluster=true icon="'icon'">
-        </ui-gmap-markers>
-
-
-        </ui-gmap-google-map>
-
+        		<!--Toggle search-->
 				<div id="advanced-search" class="search-first-class">
 					<form class="search-now-class form-inline" role="form" style="height:100%;">
 
-					<!--bootstrap-ify later form elements need to lineup in two columns-->
-					<div class="form-group">
+						<!--bootstrap-ify later form elements need to lineup in two columns-->
+						<div class="form-group">
 
-						<h2>Search</h2>
+							<h2>Search</h2>
 
-						<label for="queryOne">Form input one:</label> <input id="queryOne" class="form-control" type="text"/>
+							<label for="queryOne">Form input one:</label> <input id="queryOne" class="form-control" type="text"/>
 
-						<br/>
-						<br/>
+							<br/>
+							<br/>
 
-						<!--
-						<div class="dropdown">
-							<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">-- N/A --
-							<span class="caret"></span></button>
-							<ul class="dropdown-menu">
-								<li value="#1"><a>One</a></li>
-								<li value="#2"><a>Two</a></li>
-								<li value="#3"><a>Three</a></li>
-							</ul>
-						</div>
-						-->
-						<label for="dropdownOne">Form input two:</label>
-						<select id="dropdownOne" class="form-control">
-						<option class="form-control">One</option>
-						<option class="form-control">two</option>
-						<option class="form-control">three</option>
-						<option class="form-control">four</option>
-						</select>
+							<!--
+							<div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">-- N/A --
+								<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li value="#1"><a>One</a></li>
+									<li value="#2"><a>Two</a></li>
+									<li value="#3"><a>Three</a></li>
+								</ul>
+							</div>
+							-->
 
-						<br/>
-						<br/>
-
-						<label for="dropdownTwo">Form input three:</label>
-						<input id="dropdownTwo" class="form-control" list="options-list" type="text">
-
-						<datalist class="dropdown" id="options-list">
-							<option class="form-control">one</option>
+							<!--Search options-->
+							<label for="dropdownOne">Form input two:</label>
+							<select id="dropdownOne" class="form-control">
+							<option class="form-control">One</option>
 							<option class="form-control">two</option>
 							<option class="form-control">three</option>
 							<option class="form-control">four</option>
-						</datalist>
+							</select>
 
-						<br/>
-						<br/>
+							<br/>
+							<br/>
 
-						<label for="checkboxOne">Form input four:</label>
-						<input id="checkboxOne" class="form-control" type="checkbox">one</input>
-						<br/>
-						<label for="checkboxTwo">Form input five:</label>
-						<input id="checkboxTwo"class="form-control" type="checkbox">two</input>
+							<label for="dropdownTwo">Form input three:</label>
+							<input id="dropdownTwo" class="form-control" list="options-list" type="text">
 
-						<br/>
-						<br/>
+							<datalist class="dropdown" id="options-list">
+								<option class="form-control">one</option>
+								<option class="form-control">two</option>
+								<option class="form-control">three</option>
+								<option class="form-control">four</option>
+							</datalist>
 
-						<input data-ng-click="newFunction(33.33, 44.43)" class="form-control" style="margin-top:-10px;" type="submit" text="Search"/>
+							<br/>
+							<br/>
 
-						<br/>
-					</div>
+							<label for="checkboxOne">Form input four:</label>
+							<input id="checkboxOne" class="form-control" type="checkbox">one</input>
+							<br/>
+							<label for="checkboxTwo">Form input five:</label>
+							<input id="checkboxTwo"class="form-control" type="checkbox">two</input>
+
+							<br/>
+							<br/>
+
+							<input data-ng-click="newFunction(33.33, 44.43)" class="form-control" style="margin-top:-10px;" type="submit" text="Search"/>
+
+							<br/>
+						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="container">
-	<hr/>
-	</div>
-
-
-	<!--Timeline container-->
-	<div class="container" style="margin-top:3%; margin-bottom:3%;">
-	<div ng-app="">
-
-	<!--
-	<div class="progress" style="height:30%">
-		<div class="progress-bar" role="progressbar" aria-valuenow="70"
-		aria-valuemin="20" aria-valuemax="100" style="width:70%">
-		<span class="sr-only">70% Complete</span>
+		<div class="container">
+		<hr/>
 		</div>
-	</div>
-	-->
-
-  <form id="data_slider_group" style="">
-
-    <h2 id="current-date" style="text-align:center;">Current date range: {{date}}</h2>
-
-    <div style="">
-    <select class="form-control date-picker" id="date_month_A"/></select>
-    <select class="form-control date-picker" id="date_year_A"/></select>
-    <input ng-model="date" id="data_slider" style="float:left;margin:15px 0;" type="range" min="0" max="100"/>
-    <select class="form-control date-picker" id="date_month_B"/></select>
-    <select class="form-control date-picker" id="date_year_B"/></select>
-    </div>
-
-  </form>
-
-	</div>
-	</div>
-
-	<div class="container">
-	<hr/>
-	</div>
-
-	<!--bookshelf container-->
-	<div class="container">
-	<div style="">
-
-    <a href="##">
-    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <h3>Syria</h3>
-      <img alt="Syria" src="img/IMG_0003.jpg" style="width:169px;height:256px;"/>
-    </div>
-    </a>
-
-    <a>
-    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <H3>South Sudan 1</h3>
-      <img alt="South Sudan" src="img/IMG_0002.jpg" style="width:169px;height:256px;"/>
-    </div>
-    </a>
-
-    <a>
-    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <H3>Other 2</H3>
-      <img alt="Other 2" src="http://.com/uploads/syria.png" style="width:64px;height:64px;"/>
-    </div>
-    </a>
-
-    <a>
-    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
-      <H3>Other 3</H3>
-      <img alt="Other 3" src="http://.com/uploads/syria.png" style="width:64px;height:64px;"/>
-    </div>
-    </a>
-
-	</div>
-	</div>
-
-	<div class="container">
-	<hr/>
-	</div>
-
-	<div class="container" style="margin-bottom:10px;height:120px;">
-	<div style="float:left;width:50%;">
-
-    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
-
-    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
-
-    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
-
-    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
-
-    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
-  </div>
-  <div style="float:right;width:50%;">
-  <p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
-  <a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
-  <a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
-
-  <p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
-  </div>
-
-	</div>
-	<style>
-		.facebook{
-			content:url('img/facebookDark.png');
-			float:left;
-			margin:10px;
-		}
-		.facebook:hover{
-			content:url('img/facebook.png');
-			float:left;
-			margin:10px;
-		}
-		.soundcloud{
-			content:url('img/soundcloudDark.png');
-			float:left;
-			margin:10px;
-		}
-		.soundcloud:hover{
-			content:url('img/soundcloud.png');
-			float:left;
-			margin:10px;
-		}
-
-		.twitter{
-			content:url('img/twitterDark.png');
-			float:left;
-			margin:10px;
-		}
-		.twitter:hover{
-			content:url('img/twitter.png');
-			float:left;
-			margin:10px;
-		}
 
 
-		.insta{
-			content:url('img/instaDark.png');
-			float:left;
-			margin:10px;
-		}
-		.insta:hover{
-			content:url('img/insta.png');
-			float:left;
-			margin:10px;
-		}
+		<!--Timeline container-->
+		<div class="container" style="margin-top:3%; margin-bottom:3%;">
+		<div ng-app="">
 
+		<!--Progress bar
+		<div class="progress" style="height:30%">
+			<div class="progress-bar" role="progressbar" aria-valuenow="70"
+			aria-valuemin="20" aria-valuemax="100" style="width:70%">
+			<span class="sr-only">70% Complete</span>
+			</div>
+		</div>
+		-->
 
-	</style>
+		<!--Timeline-->
+		<form id="data_slider_group" style="">
 
+		    <h2 id="current-date" style="text-align:center;">Current date range: {{date}}</h2>
 
-	<script>
-	var toggleSearch = false;
-	changeClasses();
-	function changeClasses(){
+		    <div style="">
+			    <select class="form-control date-picker" id="date_month_A"/></select>
+			    <select class="form-control date-picker" id="date_year_A"/></select>
+			    <input ng-model="date" id="data_slider" style="float:left;margin:15px 0;" type="range" min="0" max="100"/>
+			    <select class="form-control date-picker" id="date_month_B"/></select>
+			    <select class="form-control date-picker" id="date_year_B"/></select>
+		    </div>
 
-		//alert(toggleSearch);
+		</form>
 
-		var map = document.getElementById("google-map");
-		var advancedSearchBar = document.getElementById("advanced-search");
+		</div>
+		</div>
 
-		if(toggleSearch){
-			map.className = "col-sm-8";
-			advancedSearchBar.className = "col-sm-4";
-			toggleSearch = false;
-		}else{
-			map.className = "ng-isolate-scope angular-google-map col-sm-12";
-			advancedSearchBar.className = "hide-search";
-			toggleSearch = true;
-		}
-	}
-	</script>
+		<div class="container">
+		<hr/>
+		</div>
 
+		<!--Bookshelf container-->
+		<div class="container">
+			<div style="">
+				<!--Syria report-->
+			    <a href="##">
+				    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
+				      <h3>Syria</h3>
+				      <img alt="Syria" src="img/IMG_0003.jpg" style="width:169px;height:256px;"/>
+				    </div>
+			    </a>
 
-  </body>
+			    <!--South Sudan report-->
+			    <a>
+				    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
+				      <H3>South Sudan 1</h3>
+				      <img alt="South Sudan" src="img/IMG_0002.jpg" style="width:169px;height:256px;"/>
+				    </div>
+			    </a>
 
+			    <!--Other report-->
+			    <a>
+				    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
+				      <H3>Other 2</H3>
+				      <img alt="Other 2" src="http://.com/uploads/syria.png" style="width:64px;height:64px;"/>
+				    </div>
+			    </a>
 
+			    <!--Another report-->
+			    <a>
+				    <div class="box-selection" style="background-color:rgba(51, 91, 183, 0.75);">
+				      <H3>Other 3</H3>
+				      <img alt="Other 3" src="http://.com/uploads/syria.png" style="width:64px;height:64px;"/>
+				    </div>
+		    	</a>
+			</div>
+		</div>
+
+		<div class="container">
+			<hr/>
+		</div>
+
+		<!--Footer-->
+		<div class="container" style="margin-bottom:10px;height:120px;">
+			<div style="float:left;width:50%;">
+			<!--Twitter link-->
+		    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
+		    <!--Instagram link-->
+		    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
+		    <!--Facebook link-->
+		    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
+		    <!--Sound cloud link-->
+		    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
+		    <!--RDCSI logo-->
+		    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
+		</div>
+		<div style="float:right;width:50%;">
+			<!--Address-->
+			<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
+			<!--RDCSI website link-->
+			<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
+			<!--Email link-->
+			<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
+			<!--Copyright info-->
+			<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
+		</div>
+
+		<!--Icons for social media links-->
+		<style>
+			.facebook{
+				content:url('img/facebookDark.png');
+				float:left;
+				margin:10px;
+			}
+			.facebook:hover{
+				content:url('img/facebook.png');
+				float:left;
+				margin:10px;
+			}
+			.soundcloud{
+				content:url('img/soundcloudDark.png');
+				float:left;
+				margin:10px;
+			}
+			.soundcloud:hover{
+				content:url('img/soundcloud.png');
+				float:left;
+				margin:10px;
+			}
+
+			.twitter{
+				content:url('img/twitterDark.png');
+				float:left;
+				margin:10px;
+			}
+			.twitter:hover{
+				content:url('img/twitter.png');
+				float:left;
+				margin:10px;
+			}
+			.insta{
+				content:url('img/instaDark.png');
+				float:left;
+				margin:10px;
+			}
+			.insta:hover{
+				content:url('img/insta.png');
+				float:left;
+				margin:10px;
+			}
+		</style>
+
+		<script>
+			//Toggle search
+			var toggleSearch = false;
+			changeClasses();
+			function changeClasses(){
+				//alert(toggleSearch);
+
+				var map = document.getElementById("google-map");
+				var advancedSearchBar = document.getElementById("advanced-search");
+
+				if(toggleSearch){
+					map.className = "col-sm-8";
+					advancedSearchBar.className = "col-sm-4";
+					toggleSearch = false;
+				}else{
+					map.className = "ng-isolate-scope angular-google-map col-sm-12";
+					advancedSearchBar.className = "hide-search";
+					toggleSearch = true;
+				}
+			}
+		</script>
+
+	</body>
 
 </html>
