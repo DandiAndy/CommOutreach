@@ -36,15 +36,22 @@
 	<body>
 
 		<!-- navigation header container -->
-		<div class="container">
+		<div class="container header">
+
+			<div class="sub-header">
+				<a href="#" style="float:left;color:white;text-decoration:none;padding:10px;"><h2>Interactive Map</h2></a>
+				<a href="#" style="float:right"><img class="header-img" src="img/doves.jpg"/></a>
+			</div>
+
 			<div class="btn-group btn-group-justified">
 				<a href="main.html" class="btn btn-primary">Map & Timeline</a>
 				<a href="Highlights.html" class="btn btn-primary">Highlights & Key Information</a>
 				<a href="FullReport.html" class="btn btn-primary">Full Report</a>
 			</div>
-		</div>
 
-		<br/>
+			<hr/>
+
+		</div>
 
 		<!-- google map container div -->
 		<div class="container" ng-controller="mainCtrl">
@@ -73,7 +80,7 @@
 		<div id="map_canvas">
 			<div class="row map_canvas">
 				<!--Map-->
-				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options">
+				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options" style="padding-right:0;padding-left:25px">
 					<!--Hotspot markers-->
 		        	<ui-gmap-markers models="markersToSee" coords="'self'" doCluster=true icon="'icon'"></ui-gmap-markers>
         		</ui-gmap-google-map>
@@ -232,95 +239,105 @@
 	<footer>
 		<div class="container" style="margin-bottom:10px;height:120px;">
 			<div style="float:left;width:50%;">
-			<!--Twitter link-->
-		    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
-		    <!--Instagram link-->
-		    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
-		    <!--Facebook link-->
-		    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
-		    <!--Sound cloud link-->
-		    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
-		    <!--RDCSI logo-->
-		    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
-		</div>
-		<div style="float:right;width:50%;">
-			<!--Address-->
-			<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
-			<!--RDCSI website link-->
-			<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
-			<!--Email link-->
-			<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
-			<!--Copyright info-->
-			<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
+
+				<!--Social media links-->
+			    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
+			    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
+			    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
+			    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
+			    
+			    <!--RDCSI Website link-->
+			    <a href="http://www.childsoldiers.org">
+	    		<img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
+	     		</a>
+	  		</div>
+	  
+	  		<div style="float:right;width:50%;">
+	  			<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
+	  
+		 		<div class ="footerlink">
+		  			<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
+		  			<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
+		  		</div>
+	  			
+	  			<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
+	  		</div>
 		</div>
 
-		<!--Icons for social media links-->
 		<style>
+			/*Icons for social media links*/
 			.facebook{
-				content:url('img/facebookDark.png');
-				float:left;
-				margin:10px;
+			content:url('img/facebook.png');
+			float:left;
+			margin:10px;
+			padding-bottom: 15px;
 			}
 			.facebook:hover{
-				content:url('img/facebook.png');
-				float:left;
-				margin:10px;
+			content:url('img/facebook.png');
+			float:left;
+			margin:15px;
+			padding-bottom: 15px;
 			}
 			.soundcloud{
-				content:url('img/soundcloudDark.png');
-				float:left;
-				margin:10px;
+			content:url('img/soundcloud.png');
+			float:left;
+			margin:10px;
+			padding-bottom: 15px;
 			}
 			.soundcloud:hover{
-				content:url('img/soundcloud.png');
-				float:left;
-				margin:10px;
+			content:url('img/soundcloud.png');
+			float:left;
+			margin:15px;
+			padding-bottom: 15px;
 			}
-
 			.twitter{
-				content:url('img/twitterDark.png');
-				float:left;
-				margin:10px;
+			content:url('img/twitter.png');
+			float:left;
+			margin:10px;
+			padding-bottom: 15px;
 			}
 			.twitter:hover{
-				content:url('img/twitter.png');
-				float:left;
-				margin:10px;
+			content:url('img/twitter.png');
+			float:left;
+			margin:15px;
+			padding-bottom: 15px;
 			}
 			.insta{
-				content:url('img/instaDark.png');
-				float:left;
-				margin:10px;
+			content:url('img/insta.png');
+			float:left;
+			margin:10px;
+			padding-bottom: 15px;
 			}
 			.insta:hover{
-				content:url('img/insta.png');
-				float:left;
-				margin:10px;
+			content:url('img/insta.png');
+			float:left;
+			margin:15px;
+			padding-bottom: 15px;
 			}
 		</style>
 
-		<script>
-			//Toggle search
-			var toggleSearch = false;
-			changeClasses();
-			function changeClasses(){
-				//alert(toggleSearch);
+  	</footer>
 
-				var map = document.getElementById("google-map");
-				var advancedSearchBar = document.getElementById("advanced-search");
+	<script>
+		//Toggle search
+		var toggleSearch = false;
+		changeClasses();
+		function changeClasses(){
+			//alert(toggleSearch);
 
-				if(toggleSearch){
-					map.className = "col-sm-8";
-					advancedSearchBar.className = "col-sm-4";
-					toggleSearch = false;
-				}else{
-					map.className = "ng-isolate-scope angular-google-map col-sm-12";
-					advancedSearchBar.className = "hide-search";
-					toggleSearch = true;
-				}
+			var map = document.getElementById("google-map");
+			var advancedSearchBar = document.getElementById("advanced-search");
+
+			if(toggleSearch){
+				map.className = "col-sm-8";
+				advancedSearchBar.className = "col-sm-4";
+				toggleSearch = false;
+			}else{
+				map.className = "ng-isolate-scope angular-google-map col-sm-12";
+				advancedSearchBar.className = "hide-search";
+				toggleSearch = true;
 			}
-		</script>
-
-	</footer>
+		}
+	</script>
 
 </html>

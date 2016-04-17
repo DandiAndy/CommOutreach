@@ -92,6 +92,15 @@ select, option{color:black;}
 	display:inline;
 }
 
+.footerlink  a:link, .footerlink  a:visited {
+	color: #FFF;
+}
+
+.footerlink a:hover, .footerlink a:active {
+	color: #FFF; 
+	text-shadow: 2px 2px 8px;
+} 
+
 input[type=range] {
     /*removes default webkit styles*/
     -webkit-appearance: none;

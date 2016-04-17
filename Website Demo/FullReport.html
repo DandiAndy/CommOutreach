@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="appMaps">
+
   	<head>
 	    <title>Simple Map</title>
 		
@@ -97,77 +98,86 @@
 
   	</body>
 
-  	<!--Footer-->
-  	<div class="container" style="margin-bottom:10px;height:120px;">
-		<div style="float:left;width:50%;">
+  	<footer>
+	  	<div class="container" style="margin-bottom:10px;height:120px;">
+			<div style="float:left;width:50%;">
 
-			<!--Social media links-->
-		    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
-		    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
-		    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
-		    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
-		    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
+				<!--Social media links-->
+			    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
+			    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
+			    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
+			    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
+			    
+			    <!--RDCSI Website link-->
+			    <a href="http://www.childsoldiers.org">
+	    		<img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
+	     		</a>
+	  		</div>
+	  
+	  		<div style="float:right;width:50%;">
+	  			<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
+	  
+		 		<div class ="footerlink">
+		  			<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
+		  			<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
+		  		</div>
+	  			
+	  			<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
+	  		</div>
+		</div>
 
-	  	</div>
-
-		<div style="float:right;width:50%;">
-			<!--address-->
-			<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
-			<!--website link-->
-			<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
-			<!--email link-->
-			<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
-			<!--copyright info-->
-			<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
-	  	</div>
-
-  	</div>
-
-	<style>
-
-		/*Icons for social media links*/
-		.facebook{
-			content:url('img/facebookDark.png');
-			float:left;
-			margin:10px;
-		}
-		.facebook:hover{
+		<style>
+			/*Icons for social media links*/
+			.facebook{
 			content:url('img/facebook.png');
 			float:left;
 			margin:10px;
-		}
-		.soundcloud{
-			content:url('img/soundcloudDark.png');
+			padding-bottom: 15px;
+			}
+			.facebook:hover{
+			content:url('img/facebook.png');
 			float:left;
-			margin:10px;
-		}
-		.soundcloud:hover{
+			margin:15px;
+			padding-bottom: 15px;
+			}
+			.soundcloud{
 			content:url('img/soundcloud.png');
 			float:left;
 			margin:10px;
-		}
-		.twitter{
-			content:url('img/twitterDark.png');
+			padding-bottom: 15px;
+			}
+			.soundcloud:hover{
+			content:url('img/soundcloud.png');
 			float:left;
-			margin:10px;
-		}
-		.twitter:hover{
+			margin:15px;
+			padding-bottom: 15px;
+			}
+			.twitter{
 			content:url('img/twitter.png');
 			float:left;
 			margin:10px;
-		}
-		.insta{
-			content:url('img/instaDark.png');
+			padding-bottom: 15px;
+			}
+			.twitter:hover{
+			content:url('img/twitter.png');
 			float:left;
-			margin:10px;
-		}
-		.insta:hover{
+			margin:15px;
+			padding-bottom: 15px;
+			}
+			.insta{
 			content:url('img/insta.png');
 			float:left;
 			margin:10px;
-		}
-
-	</style>
+			padding-bottom: 15px;
+			}
+			.insta:hover{
+			content:url('img/insta.png');
+			float:left;
+			margin:15px;
+			padding-bottom: 15px;
+			}
+		</style>
+	</footer>
 
 	<!--For API-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
