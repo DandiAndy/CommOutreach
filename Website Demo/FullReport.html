@@ -1,86 +1,127 @@
 <!DOCTYPE html>
 <html ng-app="appMaps">
-  <head>
-    <title>Simple Map</title>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
+  	<head>
+	    <title>Simple Map</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta charset="utf-8">
 
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
+	    <style>
+	      html, body {
+	        height: 100%;
+	        margin: 0;
+	        padding: 0;
+	      }
+	      #map {
+	        height: 100%;
+	      }
+	    </style>
 
 
-	<!-- For bootstrap and jquery -->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<!-- For bootstrap and jquery -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
- 	<!-- css here -->
-	<link rel="stylesheet" type="text/css" href="css/PageDesignV1.css">
+	 	<!-- css here -->
+		<link rel="stylesheet" type="text/css" href="css/PageDesignV1.css">
 
-	<!-- For google map -->
-	<script src="app/lodash.js"></script>
-	<script src="app/angular.min.js"></script>
-	<script src="app/angular-simple-logger.js"></script>
-	<script src="app/angular-google-maps.js"></script>
-  	<script src="app/romeo_js.js"></script>
+		<!-- For google map -->
+		<script src="app/lodash.js"></script>
+		<script src="app/angular.min.js"></script>
+		<script src="app/angular-simple-logger.js"></script>
+		<script src="app/angular-google-maps.js"></script>
+	  	<script src="app/romeo_js.js"></script>
 
-  </head>
+  	</head>
 
-  <body>
+  	<!-- This is used for the nested sections -->
+    <script type="text/ng-template"  id="section_renderer">
+        <div><a ng-click="selectSection(section)">{{section.title}}</a></div>
+        <div ng-if="openSections.indexOf(section.id) != -1">
+            <div ng-bind-html="section.content"></div>
+            <ul>
+                <li ng-repeat="section in section.children" ng-include="'section_renderer'"></li>
+            </ul>
+            </div>
+    </script>
 
-	<!-- navigation header container -->
-	<div class="container">
-		<div class="btn-group btn-group-justified">
-      <a href="PageDesignV1.1.html" class="btn btn-primary">Map & Timeline</a>
-		  <a href="Highlights.html" class="btn btn-primary">Highlights & Key Information</a>
-		  <a href="FullReport.html" class="btn btn-primary">Full Report</a>
+  	<body>
+
+		<!-- navigation header container -->
+		<div class="container">
+			<div class="btn-group btn-group-justified">
+	      <a href="PageDesignV1.1.html" class="btn btn-primary">Map & Timeline</a>
+			  <a href="Highlights.html" class="btn btn-primary">Highlights & Key Information</a>
+			  <a href="FullReport.html" class="btn btn-primary">Full Report</a>
+			</div>
 		</div>
-	</div>
 
-	<!-- content goes here -->
-	<div class="container">
-		<!--PDF download-->
-		<a href="reports/csci3171-as3-w16.pdf" download="csci3171-as3-w16.pdf">Download</a>
-		<!--Temp pdf used add a pdf folder and change the current .pdf-->
-		<iframe src = "reports/csci3171-as3-w16.pdf" width="100%" height="800px" allowfullscreen webkitallowfullscreen></iframe>
-	</div>
+		<!--The following code section was not tested. It was taken from the previous team's microsite. It is meant to display a sidebar listing the country reports stored in the API. After selecting a report on the sidebar, a list of nested sections within that report should be displayed. Each section should collpase to display subsections and their content.-->
+		<!--Retrieve information from API-->
+		<div class="container-fluid">
+            <div class="row">
+            	<!--Sidebar listing countries-->
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li ng-repeat="country in countries" ng-class="{'active':isCurrentCountry(country)}">
+                            <a ng-click="setCurrentCountry(country)">
+                                {{country.name}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--List of nested sections in report-->
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <div ng-class="{active: isSelectedReport(report.id)}"
+                         ng-show="currentCountry != null"
+                         ng-repeat="report in reports | filter:{country:currentCountry.id}">
+                        <a ng-click="setCurrentReport(report)" target="_blank">{{report.title}} - {{report.subtitle}}</a>
+                    </div>
+                    <div ng-repeat="section in sections | filter:{report:currentReport.id}"
+                         ng-show="currentReport != null"
+                         ng-include="'section_renderer'">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of untested section-->
 
-  </body>
+		<!--PDF iframe and download-->
+		<div class="container">
+			<!--PDF download-->
+			<a href="reports/csci3171-as3-w16.pdf" download="csci3171-as3-w16.pdf">Download</a>
+			<!--Temp pdf used add a pdf folder and change the current .pdf-->
+			<iframe src = "reports/csci3171-as3-w16.pdf" width="100%" height="800px" allowfullscreen webkitallowfullscreen></iframe>
+		</div>
 
-  <!--Footer-->
-  <div class="container" style="margin-bottom:10px;height:120px;">
-	<div style="float:left;width:50%;">
+  	</body>
 
-		<!--Social media links-->
-	    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
-	    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
-	    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
-	    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
-	    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
+  	<!--Footer-->
+  	<div class="container" style="margin-bottom:10px;height:120px;">
+		<div style="float:left;width:50%;">
+
+			<!--Social media links-->
+		    <a class="twitter" href="https://twitter.com/childsoldiers" > <img src="img/twitter.png"></a>
+		    <a class="insta" href="https://www.instagram.com/rdcsi/" > <img src="img/insta.png"></a>
+		    <a class="facebook" href="https://www.facebook.com/ChildSoldiers.org/" id="facebook"></a>
+		    <a class="soundcloud" href="https://soundcloud.com/childsoldiers" id="soundcloud"></a>
+		    <img id="romeo_img" alt="image/logo" src="img/Capture.png" style="float:left;min-width:100px;min-height:33px;clear:both;"/>
+
+	  	</div>
+
+		<div style="float:right;width:50%;">
+			<!--address-->
+			<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
+			<!--website link-->
+			<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
+			<!--email link-->
+			<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
+			<!--copyright info-->
+			<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
+	  	</div>
 
   	</div>
-
-	<div style="float:right;width:50%;">
-		<!--address-->
-		<p>The Roméo Dallaire Child Soldiers Initiative, P.O Box 15000, Dalhousie University,<br/> Halifax, Nova Scotia, B3H 4R2</p>
-		<!--website link-->
-		<a href="http://www.childsoldiers.org" target="_top">www.childsoldiers.org</a>
-		<!--email link-->
-		<a href="mailto:info@childsoldiers.org" target="=_top">Email: info@childsoldiers.org</a>
-		<!--copyright info-->
-		<p style="position: relative;bottom: -30px;">© 2016 The Roméo Dallaire Child Soldiers Initiative | All Rights Reserved</p>
-  	</div>
-
-  </div>
 
 	<style>
 
@@ -127,5 +168,14 @@
 		}
 
 	</style>
+
+	<!--For API-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-sanitize.js"></script>
+    <!--This file connects to the API-->
+    <script src="app/childsoldier.js"></script>
 
 </html>
