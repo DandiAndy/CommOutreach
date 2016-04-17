@@ -36,15 +36,22 @@
 	<body>
 
 		<!-- navigation header container -->
-		<div class="container">
+		<div class="container header">
+
+			<div class="sub-header">
+				<a href="#" style="float:left;color:white;text-decoration:none;padding:10px;"><h2>Interactive Map</h2></a>
+				<a href="#" style="float:right"><img class="header-img" src="img/doves.jpg"/></a>
+			</div>
+
 			<div class="btn-group btn-group-justified">
 				<a href="PageDesignV1.1.html" class="btn btn-primary">Map & Timeline</a>
 				<a href="Highlights.html" class="btn btn-primary">Highlights & Key Information</a>
 				<a href="FullReport.html" class="btn btn-primary">Full Report</a>
 			</div>
-		</div>
 
-		<br/>
+			<hr/>
+
+		</div>
 
 		<!-- google map container div -->
 		<div class="container" ng-controller="mainCtrl">
@@ -73,7 +80,7 @@
 		<div id="map_canvas">
 			<div class="row map_canvas">
 				<!--Map-->
-				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options">
+				<ui-gmap-google-map id="google-map" class="col-sm-8" center="map.center" zoom="map.zoom" options="options" style="padding-right:0;padding-left:25px">
 					<!--Hotspot markers-->
 		        	<ui-gmap-markers models="markersToSee" coords="'self'" doCluster=true icon="'icon'"></ui-gmap-markers>
         		</ui-gmap-google-map>

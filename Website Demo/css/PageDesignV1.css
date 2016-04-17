@@ -50,6 +50,44 @@ The sans serif used in the logo.
 	background-color:black;
 }
 
+.header{
+
+	max-height: 200px;
+	display:block;
+	z-index:1;
+	background-color: #5091CD;
+	padding-left:25px;
+	padding-right:0;
+
+}
+
+.header-img{
+	height: 50%;
+	width: 100%;
+	padding:10px;
+}
+
+.affix{
+
+	top: 0px;
+	height: 70px;
+	font-size:16px;
+	z-index:1;
+	width: inherit;
+	padding-left: 15px;
+	padding-right: 15px;
+
+}
+
+.affix-top{
+	top: 0px;
+	height: 140px;
+	font-size:16px;
+	z-index:1;
+}
+
+
+
 button {font-family: Helvetica Neue;color:blue;}
 
 body {
@@ -216,6 +254,14 @@ input[type=range]:focus::-ms-fill-upper {
 		clear: both;
 	}
 
+	.header-img{
+		height:32px;
+		width: 64px;
+	}
+	h2{
+		font-size: 16px;
+	}
+
 }
 
 @media screen and (min-width:770px) {
@@ -227,6 +273,8 @@ input[type=range]:focus::-ms-fill-upper {
 		padding-bottom: 1%;
 		margin-bottom: 1%;
 	}
+
+
 }
 
 @media screen and (max-width:769px) {
@@ -239,6 +287,14 @@ input[type=range]:focus::-ms-fill-upper {
 		padding-bottom: 1%;
 		margin-bottom: 1%;
 	}
+
+		.header-img{
+			height:64px;
+			width: 128px;
+		}
+		h2{
+			font-size: 16px;
+		}
 }
 
 @media screen and (max-width:436px) {
@@ -251,6 +307,14 @@ input[type=range]:focus::-ms-fill-upper {
 		padding-bottom: 1%;
 		margin-bottom: 1%;
 	}
+
+		.header-img{
+			height:64px;
+			width: 128px;
+		}
+		h2{
+			font-size: 16px;
+		}
 }
 
 @media screen and (max-width:415px) {
@@ -263,6 +327,14 @@ input[type=range]:focus::-ms-fill-upper {
 		padding-bottom: 1%;
 		margin-bottom: 1%;
 	}
+
+	.header-img{
+		height:64px;
+		width: 128px;
+	}
+		h2{
+			font-size: 16px;
+		}
 }
 
 @media screen and (max-width:412px) {
@@ -274,6 +346,14 @@ input[type=range]:focus::-ms-fill-upper {
 		margin-bottom: 1%;
 
 	}
+
+	.header-img{
+		height:64px;
+		width: 128px;
+	}
+		h2{
+			font-size: 16px;
+		}
 }
 
 @media screen and (max-width:376px) {
@@ -286,6 +366,15 @@ input[type=range]:focus::-ms-fill-upper {
 		margin-left:0;
 		margin-right:0;
 	}
+
+
+	.header-img{
+		height:64px;
+		width: 128px;
+	}
+		h2{
+			font-size: 16px;
+		}
 }
 
 @media screen and (max-width:361px) {
@@ -298,6 +387,14 @@ input[type=range]:focus::-ms-fill-upper {
 		margin-left:0;
 		margin-right:0;
 	}
+
+		.header-img{
+			height:32px;
+			width: 64px;
+		}
+		h2{
+			font-size: 16px;
+		}
 }
 
 @media screen and (max-width:321px) {
@@ -310,6 +407,15 @@ input[type=range]:focus::-ms-fill-upper {
 		margin-left:0;
 		margin-right:0;
 	}
+
+		.header-img{
+			height:32px;
+			width: 64px;
+		}
+
+		h2{
+			font-size: 16px;
+		}
 }
 
 
